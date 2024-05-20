@@ -1,8 +1,8 @@
 // menuLinks
-  //{ href: '#', text: 'Home' },
   //{ href: '#', text: 'About' },
-  //{ href: '#', text: 'Services' },
-  //{ href: '#', text: 'Contact' }
+  //{ href: '#', text: 'Catalog' },
+  //{ href: '#', text: 'Orders' },
+  //{ href: '#', text: 'Account' }
 
 
 //Part 1: Setting up main element
@@ -21,14 +21,14 @@ document.body.appendChild(topMenuEl); // Append the menu bar to the body element
 
 // Part 3: Adding Menu Buttons
 const menuLinks = [
-  { text: 'Home', href: '#' },
   { text: 'About', href: '#' },
-  { text: 'Services', href: '#', subLinks: [
+  { text: 'Catalog', href: '#' },
+  { text: 'Orders', href: '#', subLinks: [
     { text: 'SubService1', href: '#' },
     { text: 'SubService2', href: '#' },
     { text: 'SubService3', href: '#' }
   ]},
-  { text: 'Contact', href: '#' }
+  { text: 'Account', href: '#' }
 ];
 
 const menuContainer = document.createElement('div');
@@ -64,23 +64,27 @@ topMenuEl.addEventListener('click', function(event) {
 
     // Toggle 'active' class for the clicked menu item
     target.classList.toggle('active');
-// Toggle submenu display
+
+    // Toggle submenu display
 if (!target.classList.contains('active')) {
   if (target.dataset.subLinks) {
-    subMenuEl.style.top = '100%';
+    subMenuEl.style.top = `${target.offsetTop + target.offsetHeight}px`; // Position submenu below the clicked menu item
+    subMenuEl.style.left = `${target.offsetLeft}px`; // Align submenu with the left edge of the clicked menu item
+    subMenuEl.style.display = 'block';
     buildSubmenu(JSON.parse(target.dataset.subLinks)); // Parse JSON string to get subLinks
   } else {
-    subMenuEl.style.top = '0';
+    subMenuEl.style.display = 'none';
   }
 }
 }
 });
 
+
 // Event listener for submenu clicks
 subMenuEl.addEventListener('click', function(event) {
   const target = event.target;
   if (target.tagName === 'A') {
-    subMenuEl.style.top = '0'; // Hide submenu
+    subMenuEl.style.display = 'none'; // Hide submenu
     mainEl.innerHTML = `<h1>${target.textContent}</h1>`; // Update main content
   }
 });
