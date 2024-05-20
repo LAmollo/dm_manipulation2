@@ -75,3 +75,23 @@ if (!target.classList.contains('active')) {
 }
 }
 });
+
+// Event listener for submenu clicks
+subMenuEl.addEventListener('click', function(event) {
+  const target = event.target;
+  if (target.tagName === 'A') {
+    subMenuEl.style.top = '0'; // Hide submenu
+    mainEl.innerHTML = `<h1>${target.textContent}</h1>`; // Update main content
+  }
+});
+
+// Part 5: Define the buildSubmenu Function
+function buildSubmenu(subLinks) {
+  subMenuEl.innerHTML = ''; // Clear current submenu
+  subLinks.forEach(link => {
+    const anchor = document.createElement('a');
+    anchor.setAttribute('href', link.href);
+    anchor.textContent = link.text;
+    subMenuEl.appendChild(anchor);
+  });
+}
