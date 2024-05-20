@@ -52,3 +52,26 @@ menuLinks.forEach(link => {
 
 topMenuEl.appendChild(menuContainer);
 
+//Part 4: Adding Menu Interaction
+// Event listener for top menu clicks
+topMenuEl.addEventListener('click', function(event) {
+  const target = event.target;
+  if (target.tagName === 'BUTTON') {
+    // Remove 'active' class from all menu items
+    topMenuLinks.forEach(link => {
+      link.classList.remove('active');
+    });
+
+    // Toggle 'active' class for the clicked menu item
+    target.classList.toggle('active');
+// Toggle submenu display
+if (!target.classList.contains('active')) {
+  if (target.dataset.subLinks) {
+    subMenuEl.style.top = '100%';
+    buildSubmenu(JSON.parse(target.dataset.subLinks)); // Parse JSON string to get subLinks
+  } else {
+    subMenuEl.style.top = '0';
+  }
+}
+}
+});
