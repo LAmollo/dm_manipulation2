@@ -4,7 +4,7 @@
   //{ href: '#', text: 'Services' },
   //{ href: '#', text: 'Contact' }
 
-//Part 1: Setting up main element
+
 //Part 1: Setting up main element
 const mainEl = document.querySelector('main');
 mainEl.style.backgroundColor = 'var(--main-bg)';
@@ -21,10 +21,14 @@ document.body.appendChild(topMenuEl); // Append the menu bar to the body element
 
 // Part 3: Adding Menu Buttons
 const menuLinks = [
-  { href: '#', text: 'Home' },
-  { href: '#', text: 'About' },
-  { href: '#', text: 'Services' },
-  { href: '#', text: 'Contact' }
+  { text: 'Home', href: '#' },
+  { text: 'About', href: '#' },
+  { text: 'Services', href: '#', subLinks: [
+    { text: 'SubService1', href: '#' },
+    { text: 'SubService2', href: '#' },
+    { text: 'SubService3', href: '#' }
+  ]},
+  { text: 'Contact', href: '#' }
 ];
 
 const menuContainer = document.createElement('div'); // Create a container to hold the menu buttons
