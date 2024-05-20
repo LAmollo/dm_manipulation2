@@ -5,6 +5,7 @@
   //{ href: '#', text: 'Contact' }
 
 //Part 1: Setting up main element
+//Part 1: Setting up main element
 const mainEl = document.querySelector('main');
 mainEl.style.backgroundColor = 'var(--main-bg)';
 mainEl.innerHTML = '<h1>DOM Manipulation</h1>';
