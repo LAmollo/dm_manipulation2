@@ -31,15 +31,24 @@ const menuLinks = [
   { text: 'Contact', href: '#' }
 ];
 
-const menuContainer = document.createElement('div'); // Create a container to hold the menu buttons
+const menuContainer = document.createElement('div');
 menuContainer.classList.add('menu-container');
 
-menuLinks.forEach(link => { // Loop through each item in the menuLinks array
-  const button = document.createElement('button'); // Create a button element for each item
+const topMenuLinks = []; // Array to store top menu links
+
+menuLinks.forEach(link => {
+  const button = document.createElement('button');
   button.classList.add('menu-button');
   button.textContent = link.text;
-  button.href = link.href;
-  menuContainer.appendChild(button); // Append the button to the menu container
+  button.dataset.href = link.href; // Using dataset to store href
+  menuContainer.appendChild(button);
+  topMenuLinks.push(button); // Push each button into topMenuLinks array
+
+  // If the link has subLinks, add a dataset attribute to store them
+  if (link.subLinks) {
+    button.dataset.subLinks = JSON.stringify(link.subLinks); // Store subLinks as JSON string
+  }
 });
 
-topMenuEl.appendChild(menuContainer); // Append the menu container to the menu bar
+topMenuEl.appendChild(menuContainer);
+
