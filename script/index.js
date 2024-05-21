@@ -4,7 +4,6 @@
   //{ href: '#', text: 'Orders' },
   //{ href: '#', text: 'Account' }
 
-
 //Part 1: Setting up main element
 const mainEl = document.querySelector('main');
 mainEl.style.backgroundColor = 'var(--main-bg)';
@@ -78,7 +77,6 @@ if (!target.classList.contains('active')) {
 }
 }
 });
-
 
 // Event listener for submenu clicks
 subMenuEl.addEventListener('click', function(event) {
